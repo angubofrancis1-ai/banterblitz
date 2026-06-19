@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BanterBlitz • Premium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body class="bg-zinc-950 text-white">
+  
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-900/95 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-x-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-3xl flex items-center justify-center shadow-lg">
+          <i class="fa-solid fa-futbol text-3xl text-black"></i>
+        </div>
+        <div>
+          <h1 class="text-4xl font-bold tracking-tighter">BanterBlitz</h1>
+          <p class="text-emerald-400 text-xs -mt-1 font-medium">PREMIUM BANTER ENGINE ⚽️</p>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-x-6">
+        <button onclick="toggleTheme()" class="p-3 hover:bg-zinc-800 rounded-2xl transition-colors">
+          <i id="theme-icon" class="fa-solid fa-moon text-2xl"></i>
+        </button>
+        <button onclick="showGallery()" 
+                class="flex items-center gap-x-2 px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 rounded-3xl text-sm font-medium">
+          <i class="fa-solid fa-images"></i>
+          <span>Gallery</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 bg-zinc-900 px-5 py-2 rounded-3xl border border-emerald-900 mb-4">
+        <span class="text-emerald-400 text-sm font-semibold">⚽️ CAUSE CHAOS</span>
+      </div>
+      <h2 class="text-6xl font-bold tracking-tighter leading-none">Create savage memes.<br>Roast your rivals.</h2>
+      <p class="text-xl text-zinc-400 mt-4">The ultimate football banter weapon</p>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-10">
+      <!-- Editor Panel -->
+      <div class="lg:col-span-5 bg-zinc-900 border border-zinc-700/50 rounded-3xl p-10">
+        <h3 class="text-2xl font-semibold mb-8 flex items-center gap-2">
+          <i class="fa-solid fa-bolt text-emerald-400"></i> Meme Studio
+        </h3>
+
+        <!-- Rivalry Mode -->
+        <div class="mb-8">
+          <label class="block text-zinc-400 text-sm mb-2">RIVALRY MODE 🔥</label>
+          <select id="rivalry" onchange="applyRivalry()" 
+                  class="w-full bg-zinc-950 border border-zinc-700 rounded-2xl px-5 py-4 text-lg focus:border-emerald-400">
+            <option value="">Pick your rivalry...</option>
+            <option value="liverpool">Liverpool vs Man United</option>
+            <option value="arsenal">Arsenal vs Spurs</option>
+            <option value="city">Man City vs Anyone</option>
+            <option value="elclasico">El Clásico</option>
+          </select>
+        </div>
+
+        <!-- Templates -->
+        <div class="mb-8">
+          <p class="text-zinc-400 text-sm mb-3">FOOTBALL TEMPLATES</p>
+          <div class="grid grid-cols-4 gap-4" id="templates"></div>
+        </div>
+
+        <!-- Text Inputs -->
+        <div class="space-y-6">
+          <div>
+            <label class="text-zinc-400 text-sm block mb-2">TOP TEXT</label>
+            <input id="top-text" type="text" 
+                   class="w-full bg-zinc-950 border border-zinc-700 focus:border-emerald-400 rounded-2xl px-5 py-4 text-xl"
+                   placeholder="YOUR RIVAL IN 90+7" oninput="drawMeme()">
+          </div>
+          <div>
+            <label class="text-zinc-400 text-sm block mb-2">BOTTOM TEXT</label>
+            <input id="bottom-text" type="text" 
+                   class="w-full bg-zinc-950 border border-zinc-700 focus:border-emerald-400 rounded-2xl px-5 py-4 text-xl"
+                   placeholder="PAIN." oninput="drawMeme()">
+          </div>
+        </div>
+
+        <div class="mt-10 flex gap-4">
+          <button onclick="downloadMeme()" 
+                  class="flex-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-bold py-5 rounded-3xl text-lg flex items-center justify-center gap-3">
+            <i class="fa-solid fa-download"></i> DOWNLOAD
+          </button>
+          <button onclick="randomBanter()" 
+                  class="flex-1 bg-zinc-800 hover:bg-zinc-700 font-medium py-5 rounded-3xl text-lg flex items-center justify-center gap-3">
+            <i class="fa-solid fa-dice"></i> RANDOM
+          </button>
+        </div>
+
+        <!-- Share Section -->
+        <div id="share-section" class="hidden mt-8 pt-6 border-t border-zinc-700">
+          <p class="text-sm text-zinc-400 mb-3">Share your masterpiece</p>
+          <div class="flex gap-3">
+            <button onclick="shareToX()" class="flex-1 bg-black py-3 rounded-2xl hover:bg-zinc-900"><i class="fa-brands fa-x-twitter"></i></button>
+            <button onclick="shareToWhatsApp()" class="flex-1 bg-green-600 py-3 rounded-2xl hover:bg-green-700"><i class="fa-brands fa-whatsapp"></i></button>
+            <button onclick="copyLink()" class="flex-1 bg-zinc-800 py-3 rounded-2xl hover:bg-zinc-700"><i class="fa-solid fa-link"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview -->
+      <div class="lg:col-span-7 flex justify-center pt-6">
+        <canvas id="meme-canvas" width="520" height="520" 
+                class="meme-canvas rounded-3xl border-8 border-zinc-800 bg-black"></canvas>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div id="gallery" class="hidden mt-20">
+      <h2 class="text-4xl font-bold mb-8 text-center">Community Hall of Fame 🔥</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="gallery-grid"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
