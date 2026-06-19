@@ -127,3 +127,47 @@
   <script src="script.js"></script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BanterBlitz • Premium</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body class="bg-zinc-950 text-white">
+
+  <!-- Header same as before... -->
+
+  <div class="max-w-7xl mx-auto px-6 py-12">
+    <!-- ... existing hero and editor ... -->
+
+    <!-- NEW: AI Prompt Helper -->
+    <div class="mt-12 bg-zinc-900 border border-zinc-700 rounded-3xl p-8">
+      <h3 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-wand-magic-sparkles text-emerald-400"></i> AI Banter Generator
+      </h3>
+      <div class="flex gap-3">
+        <input id="ai-prompt" type="text" placeholder="e.g. Haaland destroying Arsenal" 
+               class="flex-1 bg-zinc-950 border border-zinc-700 rounded-2xl px-5 py-4">
+        <button onclick="generateAICaptions()" 
+                class="bg-emerald-500 hover:bg-emerald-600 px-8 rounded-2xl font-semibold">
+          Generate
+        </button>
+      </div>
+      <div id="ai-suggestions" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+    </div>
+
+    <!-- Gallery -->
+    <div id="gallery" class="mt-20">
+      <h2 class="text-4xl font-bold mb-8 text-center">Community Hall of Fame 🔥</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6" id="gallery-grid"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+  </html>
