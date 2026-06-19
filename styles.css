@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Impact&display=swap');
+
+body {
+  font-family: 'Inter', system_ui, sans-serif;
+}
+
+.meme-canvas {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+}
+
+.meme-canvas:hover {
+  transform: scale(1.02);
+}
+
+.template-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.template-card:hover {
+  transform: translateY(-8px) scale(1.08);
+  box-shadow: 0 20px 25px -5px rgb(16 185 129 / 0.2);
+}
