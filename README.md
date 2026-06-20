@@ -1,4 +1,4 @@
-# BanterBlitz ⚽️🔥
+# BanterBlitz ⚽️
 
 **Football Banter Meme Generator** — Create savage memes and roast your rivals in seconds.
 
